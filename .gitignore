@@ -32,9 +32,25 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+# ...but keep the template, which holds no secrets.
+!.env.local.example
 
 # vercel
 .vercel
+
+# Personal machine settings — yours alone, not part of the site.
+.claude/settings.local.json
+
+# Tooling skills installed on this Mac. Hundreds of files, including font
+# binaries, none of which the website needs to build or run.
+.claude/skills/
+
+# Source material. The originals stay on this Mac; the site ships the processed
+# copies in /public. Keeping them out means an unreleased manuscript summary and
+# a family photo are not published if this repository is ever public.
+/IMG_*.jpeg
+/IMG_*.JPG
+/*.docx
 
 # typescript
 *.tsbuildinfo
