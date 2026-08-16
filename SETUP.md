@@ -22,13 +22,11 @@ query**, paste the whole of [`supabase/schema.sql`](supabase/schema.sql), and
 press Run. It creates a `subscribers` table and the security policy that lets
 the public add an address but not read the list.
 
-**b. Copy your keys.**
+**b. Copy your keys.** `.env.local` already exists — the Vercel CLI created it,
+and the empty `SUPABASE_` lines are waiting at the bottom. Open it and fill them
+in; don't replace the file, or you'll delete the Vercel token at the top.
 
-```bash
-cp .env.local.example .env.local
-```
-
-Fill in two values from **Project Settings** in the Supabase dashboard:
+The two values come from **Project Settings** in the Supabase dashboard:
 
 | Variable | Where it is |
 | --- | --- |
@@ -77,22 +75,37 @@ it in a file here and don't paste it into a chat.
 
 ---
 
-## 4. Put it online
+## 4. It is already online
 
-Vercel is free for a site this size and is built by the same people as Next.js.
+Live at **https://theidealstoic.vercel.app**, deployed straight from this folder
+with the Vercel CLI. The project is `theidealstoic` under the `book18` team.
 
-1. Push this folder to a GitHub repository.
-2. At [vercel.com/new](https://vercel.com/new), import that repository. Vercel
-   detects Next.js on its own — accept the defaults.
-3. Before the first deploy, open **Environment Variables** and add the same
-   three values from your `.env.local`. `.env.local` is deliberately not
-   committed to git, so Vercel cannot see it otherwise.
-4. Deploy.
-5. **Settings → Domains → Add** `theidealstoic.com`. Vercel shows you the DNS
-   records to create at whichever registrar holds the domain. Add both the
-   apex (`theidealstoic.com`) and `www`.
+**To publish a change**, run this from the project folder:
 
-DNS usually takes under an hour. The HTTPS certificate is automatic.
+```bash
+npx vercel deploy --prod --yes
+```
+
+That uploads the current state of the folder and takes about a minute. There is
+no GitHub in the loop, so nothing happens automatically — a change is live only
+after you run that command.
+
+**Environment variables.** Vercel cannot see `.env.local`; it never leaves this
+Mac. Add the same values in the Vercel dashboard under
+**Settings → Environment Variables**, then redeploy. Until `SUPABASE_URL` and
+`SUPABASE_ANON_KEY` are set there, the live form replies "not connected yet"
+even if it works locally.
+
+**Your domain.** Vercel dashboard → the project → **Settings → Domains → Add**,
+enter `theidealstoic.com`. It shows the DNS records to create at whichever
+registrar holds the domain; add both the apex and `www`. DNS usually takes under
+an hour and the HTTPS certificate is automatic.
+
+**Connecting GitHub later** (optional) would give you backup, version history,
+and automatic deploys on every change. It stalled on a GitHub account conflict —
+the email is attached to more than one sign-in identity. Sorting that out with
+GitHub, then linking the repository in Vercel's project settings, is all that's
+needed. Nothing about the site has to change.
 
 ---
 

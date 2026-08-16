@@ -115,7 +115,9 @@ export default function Home() {
                     <span className="block font-[family-name:var(--font-display)] text-[1.05rem] leading-tight">
                       {author.name}
                     </span>
-                    <span className="eyebrow mt-1.5 block">{author.role}</span>
+                    {author.role && (
+                      <span className="eyebrow mt-1.5 block">{author.role}</span>
+                    )}
                   </span>
                 </figcaption>
               </figure>

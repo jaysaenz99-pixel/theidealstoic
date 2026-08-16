@@ -49,7 +49,9 @@ export const book = {
 
 export const author = {
   name: "Jay Saenz, MD",
-  role: "Orthopedic surgeon",
+
+  /** Sits under the name by the portrait. Set to null to show nothing. */
+  role: null as string | null,
 
   bio: [
     "Jay Saenz is a practicing orthopedic surgeon in Memphis, Tennessee, and an entrepreneur. He is fifty-three, has been married for thirty years, and is the father of three.",
@@ -93,11 +95,11 @@ export const signup = {
   eyebrow: "Before September 15",
   heading: "Hear when it’s out",
   blurb:
-    "Leave your address and you will get one note on publication day, and nothing else. No newsletter, no forwarding, no list sold to anyone.",
-  buttonIdle: "Send me the note",
+    "Leave your address to hear when the book is published on September 15, and now and then afterwards. It is never sold or passed to anyone else.",
+  buttonIdle: "Add me to the list",
   buttonBusy: "Sending",
-  success: "You are on the list. Watch for one email on September 15.",
-  fineprint: "One email. Unsubscribe in a click.",
+  success: "You are on the list. Watch for a note on September 15.",
+  fineprint: "Unsubscribe in a click.",
 };
 
 export const meta = {
