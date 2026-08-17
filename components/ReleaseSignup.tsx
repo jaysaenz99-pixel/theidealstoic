@@ -64,7 +64,7 @@ export default function ReleaseSignup() {
           data-reveal
           style={{ "--reveal-delay": "70ms" } as React.CSSProperties}
         >
-          Hear when it&rsquo;s out.
+          Read a chapter now.
         </h2>
 
         <p
@@ -72,15 +72,15 @@ export default function ReleaseSignup() {
           data-reveal
           style={{ "--reveal-delay": "140ms" } as React.CSSProperties}
         >
-          Leave your address to hear when the book is published on September 15,
-          and now and then afterwards. It is never sold or passed to anyone
-          else.
+          Leave your address and a chapter comes straight to your inbox &mdash;
+          along with word when the book is published on September 15, and now
+          and then afterwards.
         </p>
 
         <div aria-live="polite">
           {status === "done" ? (
             <p className="signup__thanks">
-              Thank you &mdash; you&rsquo;re on the list.
+              Thank you &mdash; the chapter is on its way to your inbox.
             </p>
           ) : (
             <>
@@ -121,7 +121,7 @@ export default function ReleaseSignup() {
                   type="submit"
                   disabled={status === "submitting"}
                 >
-                  {status === "submitting" ? "Adding…" : "Add me →"}
+                  {status === "submitting" ? "Sending…" : "Send it to me →"}
                 </button>
               </form>
 
