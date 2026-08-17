@@ -32,7 +32,7 @@ export default function EditorialSection() {
             Drawing on decades as an orthopedic surgeon, husband, father, and
             entrepreneur, Saenz argues that the Stoics did more than invent a
             philosophy of virtue. They glimpsed enduring truths about human
-            flourishing. What they perceived in fragments, Christ embodied
+            flourishing. What they described in fragments, Christ embodied
             completely. The sage they sought is found not in abstract
             principles, but in the life of Christ.
           </p>

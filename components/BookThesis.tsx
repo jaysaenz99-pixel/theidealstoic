@@ -22,7 +22,7 @@ export default function BookThesis() {
           data-reveal
           style={{ "--reveal-delay": "160ms" } as React.CSSProperties}
         >
-          What Marcus Aurelius, Seneca, and Epictetus perceived in fragments,{" "}
+          What Marcus Aurelius, Seneca, and Epictetus described in fragments,{" "}
           <em>Christ embodied completely.</em>
         </p>
       </div>
