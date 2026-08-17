@@ -43,7 +43,7 @@ export default function Hero() {
             style={{ "--reveal-delay": "300ms" } as React.CSSProperties}
           >
             <a href="#notify" className="btn">
-              Read a chapter
+              Read the introduction
             </a>
             <a href="#argument" className="link-quiet">
               Read the argument &darr;

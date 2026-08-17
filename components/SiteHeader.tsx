@@ -48,7 +48,7 @@ export default function SiteHeader() {
             ))}
           </div>
           <a href="#notify" className="btn btn--sm">
-            Read a Chapter
+            Read the Introduction
           </a>
         </div>
       </nav>

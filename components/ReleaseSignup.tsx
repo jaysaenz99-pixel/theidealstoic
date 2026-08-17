@@ -64,7 +64,7 @@ export default function ReleaseSignup() {
           data-reveal
           style={{ "--reveal-delay": "70ms" } as React.CSSProperties}
         >
-          Read a chapter now.
+          Read the introduction now.
         </h2>
 
         <p
@@ -72,15 +72,15 @@ export default function ReleaseSignup() {
           data-reveal
           style={{ "--reveal-delay": "140ms" } as React.CSSProperties}
         >
-          Leave your address and a chapter comes straight to your inbox &mdash;
-          along with word when the book is published on September 15, and now
-          and then afterwards.
+          Leave your address and the book&rsquo;s introduction comes straight to
+          your inbox &mdash; along with word when the book is published on
+          September 15, and now and then afterwards.
         </p>
 
         <div aria-live="polite">
           {status === "done" ? (
             <p className="signup__thanks">
-              Thank you &mdash; the chapter is on its way to your inbox.
+              Thank you &mdash; the introduction is on its way to your inbox.
             </p>
           ) : (
             <>

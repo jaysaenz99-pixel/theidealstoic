@@ -26,19 +26,20 @@ const SITE = process.env.VERCEL_PROJECT_PRODUCTION_URL
   : "https://theidealstoic.com";
 
 /**
- * ▲ Waiting on the chapter itself. Put the PDF in /public under this exact
- * name and the link below starts working; until then it is a 404, which is
- * why the signup copy promising it should not go live before the file does.
+ * The book's introduction, five pages. Named for the reader rather than for
+ * us: this string becomes the filename in their downloads folder, where
+ * "chapter.pdf" would be anonymous a week later.
  */
-const CHAPTER_URL = `${SITE}/chapter.pdf`;
+const CHAPTER_URL = `${SITE}/christ-the-ideal-stoic-introduction.pdf`;
 
-export const WELCOME_SUBJECT = "Your chapter of Christ the Ideal Stoic";
+export const WELCOME_SUBJECT =
+  "Your introduction to Christ the Ideal Stoic";
 
 export function welcomeText() {
   return [
     "CHRIST THE IDEAL STOIC",
     "",
-    "Thank you for asking for the chapter. Here it is:",
+    "Thank you for asking for the introduction. Here it is:",
     "",
     CHAPTER_URL,
     "",
@@ -91,13 +92,13 @@ export function welcomeHtml() {
   <tr>
     <td style="padding:44px 40px 8px;">
       <div style="font-family:${SANS};font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:${STONE};">Before September 15</div>
-      <h1 style="margin:16px 0 0;font-family:${SERIF};font-weight:normal;font-size:32px;line-height:1.15;color:${NAVY};">Your chapter.</h1>
+      <h1 style="margin:16px 0 0;font-family:${SERIF};font-weight:normal;font-size:32px;line-height:1.15;color:${NAVY};">Your introduction.</h1>
     </td>
   </tr>
 
   <tr>
     <td style="padding:24px 40px 0;">
-      <p style="margin:0 0 20px;font-family:${SERIF};font-size:17px;line-height:1.7;color:${INK};">Thank you for asking for the chapter. It is waiting for you at the link below.</p>
+      <p style="margin:0 0 20px;font-family:${SERIF};font-size:17px;line-height:1.7;color:${INK};">Thank you for asking for the introduction. It is waiting for you at the link below.</p>
       <p style="margin:0 0 20px;font-family:${SERIF};font-size:17px;line-height:1.7;color:${INK};"><em>Christ the Ideal Stoic</em> is published on <strong style="font-weight:normal;color:${NAVY};">September 15, 2026</strong>. You will hear from me then, and now and then afterwards &mdash; not often, and never with anything I would not want to read myself.</p>
       <p style="margin:0 0 20px;font-family:${SERIF};font-size:17px;line-height:1.7;color:${INK};">The Stoics taught that wisdom, courage, temperance, and justice could anchor the soul through any storm. What Marcus Aurelius, Seneca, and Epictetus discerned in fragments, Christ embodied completely. That is the argument of the book, and I am glad you want to follow it.</p>
     </td>
@@ -113,7 +114,7 @@ export function welcomeHtml() {
 
   <tr>
     <td style="padding:40px 40px 44px;">
-      <a href="${CHAPTER_URL}" style="display:inline-block;font-family:${SANS};font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:${NAVY};background:${GOLD};padding:14px 26px;text-decoration:none;border-radius:3px;">Read the chapter</a>
+      <a href="${CHAPTER_URL}" style="display:inline-block;font-family:${SANS};font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:${NAVY};background:${GOLD};padding:14px 26px;text-decoration:none;border-radius:3px;">Read the introduction</a>
       <p style="margin:18px 0 0;font-family:${SANS};font-size:12px;line-height:1.6;color:${STONE};"><a href="${SITE}" style="color:${STONE};">theidealstoic.com</a></p>
     </td>
   </tr>
