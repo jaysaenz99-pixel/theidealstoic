@@ -42,7 +42,9 @@ export default function AuthorSection() {
               and out of{" "}
               <span className="author__settled">
                 the places where its questions get settled rather than argued:{" "}
-                <em>an operating room, a marriage, three children.</em>
+                <em>
+                  an operating room, a payroll, a marriage, three children.
+                </em>
               </span>
             </p>
           </div>
