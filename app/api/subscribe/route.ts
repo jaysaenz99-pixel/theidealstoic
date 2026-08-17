@@ -41,6 +41,16 @@ function isEmail(value: unknown): value is string {
   );
 }
 
+class ResendError extends Error {
+  constructor(
+    readonly status: number,
+    readonly path: string,
+    detail: string,
+  ) {
+    super(`Resend ${path} ${status}: ${detail.slice(0, 300)}`);
+  }
+}
+
 async function resend(path: string, body: unknown) {
   const response = await fetch(`${RESEND}${path}`, {
     method: "POST",
@@ -53,10 +63,43 @@ async function resend(path: string, body: unknown) {
 
   if (!response.ok) {
     const detail = await response.text().catch(() => "");
-    throw new Error(`Resend ${path} ${response.status}: ${detail.slice(0, 300)}`);
+    throw new ResendError(response.status, path, detail);
   }
 
   return response.json().catch(() => ({}));
+}
+
+/**
+ * Resend renamed Audiences to Segments and retired the old path, which failed
+ * silently in the worst way: storing the address is attempted before the
+ * welcome note is sent, so a 404 here cost us both the contact and the email.
+ *
+ * Both paths are tried, newest first, so this survives the rename in either
+ * direction. An address Resend already holds is the outcome the reader wanted,
+ * so a conflict counts as success rather than an error thrown in their face.
+ */
+async function storeContact(segmentId: string, email: string) {
+  const paths = [
+    `/segments/${segmentId}/contacts`,
+    `/audiences/${segmentId}/contacts`,
+  ];
+
+  let lastError: unknown;
+
+  for (const path of paths) {
+    try {
+      return await resend(path, { email, unsubscribed: false });
+    } catch (error) {
+      if (error instanceof ResendError) {
+        if (error.status === 409 || error.status === 422) return {};
+        // Only a missing endpoint is worth retrying elsewhere.
+        if (error.status !== 404) throw error;
+      }
+      lastError = error;
+    }
+  }
+
+  throw lastError;
 }
 
 export async function POST(request: Request) {
@@ -108,10 +151,7 @@ export async function POST(request: Request) {
   try {
     // Keep the address first. The welcome note matters less than the list.
     if (AUDIENCE_ID) {
-      await resend(`/audiences/${AUDIENCE_ID}/contacts`, {
-        email,
-        unsubscribed: false,
-      });
+      await storeContact(AUDIENCE_ID, email);
     }
 
     await resend("/emails", {
