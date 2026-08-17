@@ -27,8 +27,13 @@ const sans = Inter({
 
 const SITE = "https://theidealstoic.com";
 
+/**
+ * The claim leads, because search results and link previews are usually cut
+ * around 155 characters and only the first sentence is certain to survive.
+ * Everything after it is a bonus that some surfaces will show in full.
+ */
 const DESCRIPTION =
-  "A forthcoming book by Jay Saenz, MD. The Stoics taught that wisdom, courage, temperance, and justice could anchor the soul through any storm — yet they were describing an ideal they could never fully embody. What Marcus Aurelius, Seneca, and Epictetus discerned in fragments, Christ embodied completely. Published September 15, 2026.";
+  "Those who follow the Stoic ascent toward virtue may be surprised, upon reaching the summit, to discover that Christ has been standing there all along. A forthcoming book by Jay Saenz, MD, on the virtues the Stoics revered and the life that embodied them. Published September 15, 2026.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
