@@ -28,7 +28,7 @@ const sans = Inter({
 const SITE = "https://theidealstoic.com";
 
 const DESCRIPTION =
-  "A forthcoming book by Jay Saenz, MD. The Stoics taught that wisdom, courage, temperance, and justice could anchor the soul through any storm — yet they were describing an ideal they could never fully embody. What Marcus Aurelius, Seneca, and Epictetus described in fragments, Christ embodied completely. Published September 15, 2026.";
+  "A forthcoming book by Jay Saenz, MD. The Stoics taught that wisdom, courage, temperance, and justice could anchor the soul through any storm — yet they were describing an ideal they could never fully embody. What Marcus Aurelius, Seneca, and Epictetus discerned in fragments, Christ embodied completely. Published September 15, 2026.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),

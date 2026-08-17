@@ -22,8 +22,9 @@ export default function BookThesis() {
           data-reveal
           style={{ "--reveal-delay": "160ms" } as React.CSSProperties}
         >
-          What Marcus Aurelius, Seneca, and Epictetus described in fragments,{" "}
-          <em>Christ embodied completely.</em>
+          Those who follow the Stoic ascent toward virtue may be surprised, upon
+          reaching the summit, to discover that{" "}
+          <em>Christ has been standing there all along.</em>
         </p>
       </div>
     </section>
