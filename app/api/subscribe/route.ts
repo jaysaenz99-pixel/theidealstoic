@@ -1,91 +1,139 @@
 import { NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
+import {
+  WELCOME_SUBJECT,
+  welcomeHtml,
+  welcomeText,
+} from "@/lib/welcome-email";
 
 export const runtime = "nodejs";
 
-const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-
 /**
- * Per-IP throttle. This lives in process memory, so it resets on deploy and is
- * not shared between serverless instances — it is a speed bump for casual
- * scripted submissions, not real abuse protection. The database unique index on
- * email is what actually keeps the list clean.
+ * Credentials for this site only. Deliberately namespaced so nothing here can
+ * ever pick up another project's email configuration.
  */
-const RATE_LIMIT = { max: 5, windowMs: 60_000 };
+const API_KEY = process.env.IDEAL_STOIC_RESEND_KEY;
+const AUDIENCE_ID = process.env.IDEAL_STOIC_AUDIENCE_ID;
+const FROM =
+  process.env.IDEAL_STOIC_FROM ??
+  "Christ the Ideal Stoic <hello@theidealstoic.com>";
+
+const RESEND = "https://api.resend.com";
+
+// Best-effort throttle. Per instance, so it slows abuse rather than stopping it.
+const RATE_WINDOW_MS = 60_000;
+const RATE_MAX = 5;
 const hits = new Map<string, number[]>();
 
-function overRateLimit(ip: string) {
+function rateLimited(key: string) {
   const now = Date.now();
-  const recent = (hits.get(ip) ?? []).filter((t) => now - t < RATE_LIMIT.windowMs);
+  const recent = (hits.get(key) ?? []).filter((t) => now - t < RATE_WINDOW_MS);
   recent.push(now);
-  hits.set(ip, recent);
+  hits.set(key, recent);
+  if (hits.size > 5_000) hits.clear();
+  return recent.length > RATE_MAX;
+}
 
-  if (hits.size > 5000) hits.clear();
+function isEmail(value: unknown): value is string {
+  return (
+    typeof value === "string" &&
+    value.length <= 254 &&
+    /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value)
+  );
+}
 
-  return recent.length > RATE_LIMIT.max;
+async function resend(path: string, body: unknown) {
+  const response = await fetch(`${RESEND}${path}`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${API_KEY}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body),
+  });
+
+  if (!response.ok) {
+    const detail = await response.text().catch(() => "");
+    throw new Error(`Resend ${path} ${response.status}: ${detail.slice(0, 300)}`);
+  }
+
+  return response.json().catch(() => ({}));
 }
 
 export async function POST(request: Request) {
-  const url = process.env.SUPABASE_URL;
-  const key = process.env.SUPABASE_ANON_KEY;
+  let payload: { email?: unknown; company?: unknown };
 
-  if (!url || !key) {
-    console.error("Supabase env vars are missing. See SETUP.md.");
-    return NextResponse.json(
-      { error: "The signup form is not connected yet." },
-      { status: 500 },
-    );
-  }
-
-  const ip =
-    request.headers.get("x-forwarded-for")?.split(",")[0].trim() ?? "unknown";
-
-  if (overRateLimit(ip)) {
-    return NextResponse.json(
-      { error: "Too many attempts. Wait a minute and try again." },
-      { status: 429 },
-    );
-  }
-
-  let payload: { email?: unknown; website?: unknown };
   try {
     payload = await request.json();
   } catch {
-    return NextResponse.json({ error: "Malformed request." }, { status: 400 });
+    return NextResponse.json({ error: "Invalid request." }, { status: 400 });
   }
 
-  // Honeypot: a real person never sees this field, so anything in it is a bot.
-  // Report success so the bot does not learn to work around it.
-  if (typeof payload.website === "string" && payload.website.trim() !== "") {
+  // Honeypot, checked again on the server.
+  if (payload.company) {
     return NextResponse.json({ ok: true });
   }
 
-  const email =
-    typeof payload.email === "string" ? payload.email.trim().toLowerCase() : "";
+  const email = typeof payload.email === "string" ? payload.email.trim() : "";
 
-  if (!EMAIL_PATTERN.test(email) || email.length > 254) {
+  if (!isEmail(email)) {
     return NextResponse.json(
       { error: "That does not look like an email address." },
       { status: 400 },
     );
   }
 
-  const supabase = createClient(url, key, { auth: { persistSession: false } });
-  const { error } = await supabase.from("subscribers").insert({ email, source: "site" });
+  const ip =
+    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
 
-  if (error) {
-    // 23505 is Postgres' unique-violation: they are already subscribed, which
-    // is the outcome they wanted. Do not confront them about it.
-    if (error.code === "23505") {
-      return NextResponse.json({ ok: true });
-    }
-
-    console.error("Supabase insert failed:", error.message, error.code);
+  if (rateLimited(ip)) {
     return NextResponse.json(
-      { error: "Could not save that address. Try again in a moment." },
-      { status: 502 },
+      { error: "Too many attempts. Please try again in a minute." },
+      { status: 429 },
     );
   }
 
-  return NextResponse.json({ ok: true });
+  if (!API_KEY) {
+    console.error(
+      "IDEAL_STOIC_RESEND_KEY is not set — the signup form cannot store or send anything.",
+    );
+    return NextResponse.json(
+      {
+        error:
+          "The list is not quite open yet. Please try again shortly, or write to hello@theidealstoic.com.",
+      },
+      { status: 503 },
+    );
+  }
+
+  try {
+    // Keep the address first. The welcome note matters less than the list.
+    if (AUDIENCE_ID) {
+      await resend(`/audiences/${AUDIENCE_ID}/contacts`, {
+        email,
+        unsubscribed: false,
+      });
+    }
+
+    await resend("/emails", {
+      from: FROM,
+      to: [email],
+      subject: WELCOME_SUBJECT,
+      html: welcomeHtml(),
+      text: welcomeText(),
+      headers: {
+        "List-Unsubscribe": `<mailto:${FROM.replace(/^.*<|>$/g, "")}?subject=Unsubscribe>`,
+      },
+    });
+
+    return NextResponse.json({ ok: true });
+  } catch (error) {
+    console.error("subscribe failed", error);
+    return NextResponse.json(
+      {
+        error:
+          "We could not add you just now. Please try again in a moment, or write to hello@theidealstoic.com.",
+      },
+      { status: 502 },
+    );
+  }
 }
