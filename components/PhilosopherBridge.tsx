@@ -2,8 +2,12 @@ import Image from "next/image";
 import chiRho from "@/public/assets/chi-rho.png";
 
 /**
- * "The Turn" — the three reversals from the book's Conclusion, verbatim.
- * Every line here is Jay's own text.
+ * "The Turn" — the passage from page 135 of the Conclusion, verbatim.
+ *
+ * The section used to stop after the reversals, which cost it the two
+ * sentences that resolve them. Without "it only renders it incomplete" the
+ * contrast reads as a rejection of Stoicism rather than a claim that it is
+ * unfinished, and the map image below has no subject to refer back to.
  */
 const REVERSALS = [
   {
@@ -59,6 +63,15 @@ export default function PhilosopherBridge() {
             </div>
           ))}
         </div>
+
+        <p className="turn__resolve" data-reveal>
+          This does not render Stoicism of little use &mdash; far from it. It
+          only renders it incomplete.
+        </p>
+
+        <p className="turn__coda" data-reveal>
+          Like a map that brings you almost, but not quite, home.
+        </p>
       </div>
     </section>
   );
