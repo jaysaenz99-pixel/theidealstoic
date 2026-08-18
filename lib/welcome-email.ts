@@ -39,20 +39,19 @@ export function welcomeText() {
   return [
     "CHRIST THE IDEAL STOIC",
     "",
-    "Thank you for asking for the introduction. Here it is:",
+    "Thank you for asking for it — it's linked below.",
     "",
     CHAPTER_URL,
     "",
-    "Christ the Ideal Stoic is published on September 15, 2026. You will hear",
-    "from me then, and now and then afterwards — not often, and never with",
-    "anything I would not want to read myself.",
+    "Christ the Ideal Stoic is published on September 15, 2026. You'll hear",
+    "from me then, and now and then afterwards, never often, and never with",
+    "anything I wouldn't want to read myself.",
     "",
     "Stoicism gives us a vision. Christ gives us a face.",
     "",
-    "The Stoics taught that wisdom, courage, temperance, and justice could",
-    "anchor the soul through any storm. What Marcus Aurelius, Seneca, and",
-    "Epictetus discerned in fragments, Christ embodied completely. That is the",
-    "argument of the book, and I am glad you want to follow it.",
+    "What Marcus Aurelius, Seneca, and Epictetus discerned in fragments,",
+    "Christ embodied completely. That is the argument, and I'm glad you want",
+    "to follow it.",
     "",
     "Jay Saenz, MD",
     "Memphis, Tennessee",
@@ -98,9 +97,9 @@ export function welcomeHtml() {
 
   <tr>
     <td style="padding:24px 40px 0;">
-      <p style="margin:0 0 20px;font-family:${SERIF};font-size:17px;line-height:1.7;color:${INK};">Thank you for asking for the introduction. It is waiting for you at the link below.</p>
-      <p style="margin:0 0 20px;font-family:${SERIF};font-size:17px;line-height:1.7;color:${INK};"><em>Christ the Ideal Stoic</em> is published on <strong style="font-weight:normal;color:${NAVY};">September 15, 2026</strong>. You will hear from me then, and now and then afterwards &mdash; not often, and never with anything I would not want to read myself.</p>
-      <p style="margin:0 0 20px;font-family:${SERIF};font-size:17px;line-height:1.7;color:${INK};">The Stoics taught that wisdom, courage, temperance, and justice could anchor the soul through any storm. What Marcus Aurelius, Seneca, and Epictetus discerned in fragments, Christ embodied completely. That is the argument of the book, and I am glad you want to follow it.</p>
+      <p style="margin:0 0 20px;font-family:${SERIF};font-size:17px;line-height:1.7;color:${INK};">Thank you for asking for it &mdash; it&rsquo;s linked below.</p>
+      <p style="margin:0 0 20px;font-family:${SERIF};font-size:17px;line-height:1.7;color:${INK};"><em>Christ the Ideal Stoic</em> is published on <strong style="font-weight:normal;color:${NAVY};">September 15, 2026</strong>. You&rsquo;ll hear from me then, and now and then afterwards, never often, and never with anything I wouldn&rsquo;t want to read myself.</p>
+      <p style="margin:0 0 20px;font-family:${SERIF};font-size:17px;line-height:1.7;color:${INK};">What Marcus Aurelius, Seneca, and Epictetus discerned in fragments, Christ embodied completely. That is the argument, and I&rsquo;m glad you want to follow it.</p>
     </td>
   </tr>
 
