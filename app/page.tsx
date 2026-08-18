@@ -19,8 +19,8 @@ export default function Page() {
         <BookThesis />
         <EditorialSection />
         <VirtuesIndex />
-        <PhilosopherBridge />
         <AuthorSection />
+        <PhilosopherBridge />
         <ReleaseSignup />
       </main>
       <SiteFooter />
