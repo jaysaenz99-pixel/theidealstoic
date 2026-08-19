@@ -56,7 +56,7 @@ export default function ReleaseSignup() {
       <div className="grain grain--section" aria-hidden="true" />
       <div className="container signup__inner">
         <p className="label label--on-dark" data-reveal>
-          Before September 15
+          Before September 29
         </p>
 
         <h2
@@ -74,7 +74,7 @@ export default function ReleaseSignup() {
         >
           Leave your address and the book&rsquo;s introduction comes straight to
           your inbox &mdash; along with word when the book is published on
-          September 15, and now and then afterwards.
+          September 29, and now and then afterwards.
         </p>
 
         <div aria-live="polite">

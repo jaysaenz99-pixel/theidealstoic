@@ -33,7 +33,7 @@ const SITE = "https://theidealstoic.com";
  * Everything after it is a bonus that some surfaces will show in full.
  */
 const DESCRIPTION =
-  "Those who follow the Stoic ascent toward virtue may be surprised, upon reaching the summit, to discover that Christ has been standing there all along. A forthcoming book by Jay Saenz, MD, on the virtues the Stoics revered and the life that embodied them. Published September 15, 2026.";
+  "Those who follow the Stoic ascent toward virtue may be surprised, upon reaching the summit, to discover that Christ has been standing there all along. A forthcoming book by Jay Saenz, MD, on the virtues the Stoics revered and the life that embodied them. Published September 29, 2026.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
@@ -85,7 +85,7 @@ const JSON_LD = {
       url: SITE,
       abstract: DESCRIPTION,
       inLanguage: "en",
-      datePublished: "2026-09-15",
+      datePublished: "2026-09-29",
       numberOfPages: 117,
       author: {
         "@type": "Person",

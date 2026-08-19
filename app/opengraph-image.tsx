@@ -63,7 +63,7 @@ export default async function Image() {
               color: GOLD,
             }}
           >
-            Forthcoming · September 15, 2026
+            Forthcoming · September 29, 2026
           </div>
 
           <div

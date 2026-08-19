@@ -43,7 +43,7 @@ export function welcomeText() {
     "",
     CHAPTER_URL,
     "",
-    "Christ the Ideal Stoic is published on September 15, 2026. You'll hear",
+    "Christ the Ideal Stoic is published on September 29, 2026. You'll hear",
     "from me then, and now and then afterwards, never often, and never with",
     "anything I wouldn't want to read myself.",
     "",
@@ -73,7 +73,7 @@ export function welcomeHtml() {
 <title>${WELCOME_SUBJECT}</title>
 </head>
 <body style="margin:0;padding:0;background:${IVORY_SOFT};">
-<div style="display:none;max-height:0;overflow:hidden;opacity:0;">Published September 15, 2026. Stoicism gives us a vision. Christ gives us a face.</div>
+<div style="display:none;max-height:0;overflow:hidden;opacity:0;">Published September 29, 2026. Stoicism gives us a vision. Christ gives us a face.</div>
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:${IVORY_SOFT};">
 <tr>
 <td align="center" style="padding:40px 16px;">
@@ -90,7 +90,7 @@ export function welcomeHtml() {
 
   <tr>
     <td style="padding:44px 40px 8px;">
-      <div style="font-family:${SANS};font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:${STONE};">Before September 15</div>
+      <div style="font-family:${SANS};font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:${STONE};">Before September 29</div>
       <h1 style="margin:16px 0 0;font-family:${SERIF};font-weight:normal;font-size:32px;line-height:1.15;color:${NAVY};">Your introduction.</h1>
     </td>
   </tr>
@@ -98,7 +98,7 @@ export function welcomeHtml() {
   <tr>
     <td style="padding:24px 40px 0;">
       <p style="margin:0 0 20px;font-family:${SERIF};font-size:17px;line-height:1.7;color:${INK};">Thank you for asking for it &mdash; it&rsquo;s linked below.</p>
-      <p style="margin:0 0 20px;font-family:${SERIF};font-size:17px;line-height:1.7;color:${INK};"><em>Christ the Ideal Stoic</em> is published on <strong style="font-weight:normal;color:${NAVY};">September 15, 2026</strong>. You&rsquo;ll hear from me then, and now and then afterwards, never often, and never with anything I wouldn&rsquo;t want to read myself.</p>
+      <p style="margin:0 0 20px;font-family:${SERIF};font-size:17px;line-height:1.7;color:${INK};"><em>Christ the Ideal Stoic</em> is published on <strong style="font-weight:normal;color:${NAVY};">September 29, 2026</strong>. You&rsquo;ll hear from me then, and now and then afterwards, never often, and never with anything I wouldn&rsquo;t want to read myself.</p>
       <p style="margin:0 0 20px;font-family:${SERIF};font-size:17px;line-height:1.7;color:${INK};">What Marcus Aurelius, Seneca, and Epictetus discerned in fragments, Christ embodied completely. That is the argument, and I&rsquo;m glad you want to follow it.</p>
     </td>
   </tr>
