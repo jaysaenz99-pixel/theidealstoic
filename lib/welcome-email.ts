@@ -53,7 +53,7 @@ export function welcomeText() {
     "Christ embodied completely. That is the argument, and I'm glad you want",
     "to follow it.",
     "",
-    "Jay Saenz, MD",
+    "Jay Saenz",
     "Memphis, Tennessee",
     "",
     "theidealstoic.com",
@@ -106,7 +106,7 @@ export function welcomeHtml() {
   <tr>
     <td style="padding:16px 40px 0;">
       <div style="height:1px;background:${GOLD};width:36px;"></div>
-      <p style="margin:18px 0 0;font-family:${SERIF};font-size:17px;line-height:1.6;color:${NAVY};">Jay Saenz, MD</p>
+      <p style="margin:18px 0 0;font-family:${SERIF};font-size:17px;line-height:1.6;color:${NAVY};">Jay Saenz</p>
       <p style="margin:4px 0 0;font-family:${SANS};font-size:11px;letter-spacing:2px;text-transform:uppercase;color:${STONE};">Memphis, Tennessee</p>
     </td>
   </tr>
@@ -121,7 +121,7 @@ export function welcomeHtml() {
   <tr>
     <td style="background:${NAVY};padding:28px 40px;text-align:center;">
       <p style="margin:0;font-family:${SANS};font-size:11px;line-height:1.7;color:#a9a293;">Your address is never sold or passed to anyone else.<br>Reply to this message at any time to be taken off the list.</p>
-      <p style="margin:14px 0 0;font-family:${SANS};font-size:11px;color:${GOLD_DEEP};">&copy; 2026 Jay Saenz, MD</p>
+      <p style="margin:14px 0 0;font-family:${SANS};font-size:11px;color:${GOLD_DEEP};">&copy; 2026 Jay Saenz</p>
     </td>
   </tr>
 
