@@ -10,7 +10,7 @@ export default function AuthorSection() {
             <Image
               className="author__portrait"
               src={portrait}
-              alt="Jay Saenz, MD, author of Christ the Ideal Stoic, with his wife, beside a mountain stream"
+              alt="Jay Saenz, MD, author of Christ the Ideal Stoic"
               sizes="(max-width: 820px) 100vw, 40vw"
               placeholder="blur"
             />
