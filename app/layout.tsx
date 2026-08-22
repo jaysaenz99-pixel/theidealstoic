@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, EB_Garamond, Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const serif = Cormorant_Garamond({
@@ -139,7 +140,11 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        {/* Cookieless page counts. No identifiers, nothing to consent to. */}
+        <Analytics />
+      </body>
     </html>
   );
 }
