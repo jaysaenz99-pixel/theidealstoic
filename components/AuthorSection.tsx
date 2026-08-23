@@ -41,7 +41,7 @@ export default function AuthorSection() {
               <em>Christ the Ideal Stoic</em> grew out of that reading &mdash;
               and out of{" "}
               <span className="author__settled">
-                the places where its questions get settled rather than argued:{" "}
+                the places where its questions get lived rather than argued:{" "}
                 <em>
                   an operating room, a business, a marriage, three children.
                 </em>
