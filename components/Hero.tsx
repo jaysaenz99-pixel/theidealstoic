@@ -36,7 +36,7 @@ export default function Hero() {
           >
             Jay Saenz, MD
             <span className="hero__credential">
-              Orthopedic surgeon &middot; Memphis
+              Orthopedic surgeon
             </span>
           </p>
 
