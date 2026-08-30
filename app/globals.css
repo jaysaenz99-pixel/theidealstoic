@@ -463,6 +463,17 @@ a:hover {
   max-width: 520px;
 }
 
+/* Sits beneath the byline: who is speaking, and from where. Set quieter
+   than the name so it reads as a footnote rather than a second line. */
+.hero__credential {
+  display: block;
+  margin-top: 7px;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--stone-400);
+}
+
 .hero__author {
   font-family: var(--sans);
   font-size: 13px;

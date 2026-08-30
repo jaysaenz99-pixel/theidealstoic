@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 const LINKS = [
   { href: "#book", label: "The Book" },
   { href: "#argument", label: "The Argument" },
-  { href: "#author", label: "The Author" },
+  { href: "#author", label: "Meet the Author" },
 ];
 
 export default function SiteHeader() {

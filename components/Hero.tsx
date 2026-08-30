@@ -35,6 +35,9 @@ export default function Hero() {
             style={{ "--reveal-delay": "220ms" } as React.CSSProperties}
           >
             Jay Saenz, MD
+            <span className="hero__credential">
+              Orthopedic surgeon &middot; Memphis
+            </span>
           </p>
 
           <div
