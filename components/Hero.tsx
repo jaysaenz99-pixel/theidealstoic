@@ -6,7 +6,7 @@ export default function Hero() {
       <div className="container hero__grid">
         <div>
           <p className="eyebrow" data-reveal>
-            Forthcoming
+            Forthcoming &middot; January 19, 2027
           </p>
 
           <h1

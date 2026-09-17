@@ -56,7 +56,7 @@ export default function ReleaseSignup() {
       <div className="grain grain--section" aria-hidden="true" />
       <div className="container signup__inner">
         <p className="label label--on-dark" data-reveal>
-          Before publication
+          Before January 19
         </p>
 
         <h2
@@ -73,8 +73,8 @@ export default function ReleaseSignup() {
           style={{ "--reveal-delay": "140ms" } as React.CSSProperties}
         >
           Leave your address and the book&rsquo;s introduction comes straight to
-          your inbox &mdash; along with word when the book is published, and now
-          and then afterwards.
+          your inbox &mdash; along with word when the book is published on
+          January 19, and now and then afterwards.
         </p>
 
         <div aria-live="polite">
